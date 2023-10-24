@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-const Color buttonColor = Color(0xffFF592C);
+const Color kMainColor = Color(0xffFF592C);

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:well_fit/features/onboarding/presentation/mange/onboarding_cubit.dart';
 
 import 'core/utils/app_router.dart';
 
@@ -11,9 +13,17 @@ class WellFit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
-      debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => OnboardingCubit(),
+        )
+      ],
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        theme: ThemeData.light(useMaterial3: true),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

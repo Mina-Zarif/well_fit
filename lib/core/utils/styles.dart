@@ -19,7 +19,7 @@ abstract class Styles {
   static const TextStyle quickSand16 = TextStyle(
     fontSize: 16,
     fontFamily: 'Quicksand',
-    fontWeight: FontWeight.w500, //medium w600 semi-bold
+    fontWeight: FontWeight.w400, //medium w600 semi-bold
   );
   static const TextStyle rubik16 = TextStyle(
     fontSize: 16,

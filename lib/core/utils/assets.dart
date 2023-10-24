@@ -1,20 +1,15 @@
-import 'package:flutter_svg/flutter_svg.dart';
-
 class AssetsData {
-  static final logo = SvgPicture.asset('assets/images/logo.svg');
-  static const arabic = 'assets/images/egypt.svg';
-  static const english = 'assets/images/english.svg';
-  static const onBoarding1 = 'assets/images/Diet-pana 1.png';
-  static const onBoarding2 = 'assets/images/Diet-rafiki 1.png';
-  static const onBoarding3 = 'assets/images/Workout-pana 1.png';
-  static const startPage = 'assets/images/Fitness stats-pana 1.png';
-  static const next1 = 'assets/images/Button - Next1.svg';
-  static const next2 = 'assets/images/Button - Next2.svg';
-  static const next3 = 'assets/images/Button - Next3.svg';
-  static const moon = 'assets/images/moon.svg';
-  static const arrow = 'assets/images/down.svg';
-  static const rectangle = 'assets/images/Rectangle.svg';
-  static const male = 'assets/images/Male.png';
-  static const female = 'assets/images/Female.png';
+  // Icons  assets
+  static const String egyptIcon = "assets/icons/egypt_icon.svg";
+  static const String usaIcon = "assets/icons/usa_icon.svg";
+  static const String moonStartsIcon = "assets/icons/moon_stars_icon.svg";
 
+  // Images assets
+  static const String splashLogo = "assets/images/splash_logo.svg";
+  static const String logo1 = "assets/images/logo1.svg";
+  static const String logo2 = "assets/images/logo2.svg";
+  static const String dietPana1 = "assets/images/diet_pana_1.png";
+  static const String dietPana2 = "assets/images/diet_pana_2.png";
+  static const String dietPana3 = "assets/images/diet_pana_3.png";
+  static const String welcomePana = "assets/images/welcome_pana.png";
 }

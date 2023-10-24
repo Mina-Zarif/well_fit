@@ -1,51 +1,35 @@
 import 'package:go_router/go_router.dart';
-import 'package:well_fit/features/onBoarding/presentation/views/welcome_screen.dart';
-
-import '../../Features/onBoarding/presentation/views/language_screen_view.dart';
-import '../../Features/onBoarding/presentation/views/onboarding_view.dart';
-import '../../features/sign_up/views/email_screen.dart';
-import '../../features/sign_up/views/gender_screen.dart';
-import '../../features/sign_up/views/name_screen_view.dart';
-import '../../features/sign_up/views/verify_email_screen.dart';
+import 'package:well_fit/core/widgets/custom_animated_transition_page.dart';
+import 'package:well_fit/features/onboarding/presentation/view/onboarding_view/onboarding_view.dart';
+import 'package:well_fit/features/onboarding/presentation/view/welcome_view/welcome_view.dart';
+import 'package:well_fit/features/splash/splash_view.dart';
 
 abstract class AppRouter {
-  static const languageScreen = '/languageScreen';
-  static const onBoardingView = '/onBoardingView';
-  static const welcomeScreen = '/welcomeScreen';
-  static const nameScreen = '/nameScreen';
-  static const genderScreen = '/genderScreen';
-  static const emailScreen = '/emailScreen';
-  static const verifyEmailScreen = '/verifyEmailScreen';
+  static const String splash = '/';
+  static const String onboarding = '/onboarding';
+  static const String welcomeView = '/welcome';
 
   static final router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',
-        builder: (context, state) => const LanguageScreenView(),
+        path: splash,
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
-        path: onBoardingView,
-        builder: (context, state) => const OnBoardingView(),
+        path: onboarding,
+        pageBuilder: (context, state) => buildPageWithFadeTransition(
+          context: context,
+          state: state,
+          child: const OnboardingView(),
+        ),
       ),
       GoRoute(
-        path: welcomeScreen,
-        builder: (context, state) => const WelcomeScreen(),
-      ),
-      GoRoute(
-        path: nameScreen,
-        builder: (context, state) => const NameScreen(),
-      ),
-      GoRoute(
-        path: genderScreen,
-        builder: (context, state) => const GenderScreen(),
-      ),
-      GoRoute(
-        path: emailScreen,
-        builder: (context, state) => const EmailScreen(),
-      ),
-      GoRoute(
-        path: verifyEmailScreen,
-        builder: (context, state) => const VerifyEmailScreen(),
+        path: welcomeView,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const WelcomeView(),
+        ),
       ),
     ],
   );
