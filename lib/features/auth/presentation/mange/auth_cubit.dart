@@ -9,6 +9,9 @@ class AuthCubit extends Cubit<AuthState> {
   int index = 0;
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
+  TextEditingController emailAddress = TextEditingController();
+  String pinCode = "";
+
   bool isMale = true;
 
   void chooseGender(bool gender) {

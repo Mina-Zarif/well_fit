@@ -5,8 +5,10 @@ import 'package:well_fit/core/widgets/custom_appbar.dart';
 import 'package:well_fit/core/widgets/custom_liner_stepper.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_cubit.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_state.dart';
+import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/email_view.dart';
 import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/enroll_name_view.dart';
 import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/gender_view.dart';
+import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/verification_view.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -23,7 +25,7 @@ class SignUpView extends StatelessWidget {
             return Column(
               children: [
                 CustomAppBar(
-                  leading: (cubit.index == 1)
+                  leading: (cubit.index != 0)
                       ? const Icon(Icons.arrow_back_ios)
                       : const SizedBox(),
                   leadingOnTap: () {
@@ -33,7 +35,7 @@ class SignUpView extends StatelessWidget {
                     );
                   },
                   title: CustomLinerStepper(
-                    totalSteps: 5,
+                    totalSteps: 4,
                     step: cubit.index.toDouble(),
                   ),
                 ),
@@ -51,6 +53,14 @@ class SignUpView extends StatelessWidget {
                         cubit: cubit,
                         state: state,
                       ),
+                      EmailView(
+                        cubit: cubit,
+                        state: state,
+                      ),
+                      VerificationView(
+                        cubit: cubit,
+                        state: state,
+                      )
                     ],
                   ),
                 )

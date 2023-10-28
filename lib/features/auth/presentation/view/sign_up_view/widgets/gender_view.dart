@@ -69,7 +69,8 @@ class GenderView extends StatelessWidget {
           const SizedBox(height: 60),
           CustomAppButton(
             label: "Continue",
-            onTap: () {},
+            onTap: () => cubit.pageController.nextPage(duration: kNavDuration, curve: Curves.linear)
+            ,
           )
         ],
       ),
