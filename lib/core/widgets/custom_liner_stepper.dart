@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+
 import '../../constants.dart';
 
 class CustomLinerStepper extends StatelessWidget {
   const CustomLinerStepper({
     super.key,
     this.width = 120,
-    required this.percent,
     this.backgroundColor = const Color(0xffD8D8D8),
     this.activeColor = kMainColor,
+    required this.totalSteps,
+    required this.step,
   });
 
-  final double width, percent;
+  final double width, totalSteps, step;
   final Color backgroundColor, activeColor;
 
   @override
@@ -27,16 +29,17 @@ class CustomLinerStepper extends StatelessWidget {
             ),
           ),
         ),
-        Container(
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           height: 8,
-          width: width * percent,
+          width: width * step / totalSteps,
           decoration: BoxDecoration(
             color: activeColor,
             borderRadius: const BorderRadius.all(
               Radius.circular(10),
             ),
           ),
-        )
+        ),
       ],
     );
   }

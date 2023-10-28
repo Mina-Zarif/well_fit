@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:well_fit/core/widgets/custom_animated_transition_page.dart';
+import 'package:well_fit/features/auth/presentation/view/sign_up_view/sign_up_view.dart';
 import 'package:well_fit/features/onboarding/presentation/view/onboarding_view/onboarding_view.dart';
 import 'package:well_fit/features/onboarding/presentation/view/welcome_view/welcome_view.dart';
 import 'package:well_fit/features/splash/splash_view.dart';
@@ -8,6 +9,7 @@ abstract class AppRouter {
   static const String splash = '/';
   static const String onboarding = '/onboarding';
   static const String welcomeView = '/welcome';
+  static const String signupView = '/sign';
 
   static final router = GoRouter(
     routes: [
@@ -29,6 +31,14 @@ abstract class AppRouter {
           context: context,
           state: state,
           child: const WelcomeView(),
+        ),
+      ),
+      GoRoute(
+        path: signupView,
+        pageBuilder: (context, state) => buildPageWithSlideTransition(
+          context: context,
+          state: state,
+          child: const SignUpView(),
         ),
       ),
     ],
