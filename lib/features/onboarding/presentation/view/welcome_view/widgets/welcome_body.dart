@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:well_fit/core/utils/app_router.dart';
 import 'package:well_fit/core/utils/assets.dart';
 import 'package:well_fit/core/widgets/custom_app_button.dart';
 import 'package:well_fit/core/widgets/custom_appbar.dart';
@@ -39,7 +40,10 @@ class WelcomeBody extends StatelessWidget {
           const SizedBox(height: 35),
           Expanded(child: Image.asset(AssetsData.welcomePana)),
           const SizedBox(height: 35),
-          CustomAppButton(label: "Get Started", onTap: () {}),
+          CustomAppButton(
+            label: "Get Started",
+            onTap: () => AppRouter.router.pushReplacement(AppRouter.signupView),
+          ),
           const SizedBox(height: 20),
           CustomSignInButton(
             onSignInTap: () {},
