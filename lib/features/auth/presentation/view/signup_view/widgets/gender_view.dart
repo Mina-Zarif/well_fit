@@ -4,7 +4,7 @@ import 'package:well_fit/core/utils/assets.dart';
 import 'package:well_fit/core/widgets/custom_app_button.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_cubit.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_state.dart';
-import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/gender_model_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/gender_model_view.dart';
 
 class GenderView extends StatelessWidget {
   const GenderView({super.key, required this.cubit, required this.state});
@@ -69,7 +69,7 @@ class GenderView extends StatelessWidget {
           const SizedBox(height: 60),
           CustomAppButton(
             label: "Continue",
-            onTap: () => cubit.pageController.nextPage(duration: kNavDuration, curve: Curves.linear)
+            onTap: () => cubit.signupPageController.nextPage(duration: kNavDuration, curve: Curves.linear)
             ,
           )
         ],

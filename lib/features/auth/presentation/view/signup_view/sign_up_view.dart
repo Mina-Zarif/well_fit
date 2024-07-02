@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:well_fit/constants.dart';
+import 'package:well_fit/core/utils/app_router.dart';
 import 'package:well_fit/core/widgets/custom_appbar.dart';
 import 'package:well_fit/core/widgets/custom_liner_stepper.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_cubit.dart';
 import 'package:well_fit/features/auth/presentation/mange/auth_state.dart';
-import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/email_view.dart';
-import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/enroll_name_view.dart';
-import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/gender_view.dart';
-import 'package:well_fit/features/auth/presentation/view/sign_up_view/widgets/verification_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/email_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/enroll_name_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/gender_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/notification_allow_veiw.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/set_password_view.dart';
+import 'package:well_fit/features/auth/presentation/view/signup_view/widgets/verification_view.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -25,25 +28,27 @@ class SignUpView extends StatelessWidget {
             return Column(
               children: [
                 CustomAppBar(
-                  leading: (cubit.index != 0)
-                      ? const Icon(Icons.arrow_back_ios)
-                      : const SizedBox(),
+                  leading: const Icon(Icons.arrow_back_ios),
                   leadingOnTap: () {
-                    cubit.pageController.previousPage(
-                      duration: kNavDuration,
-                      curve: Curves.linear,
-                    );
+                    if (cubit.signupIndex != 0) {
+                      cubit.signupPageController.previousPage(
+                        duration: kNavDuration,
+                        curve: Curves.linear,
+                      );
+                    } else {
+                      AppRouter.router.pop();
+                    }
                   },
                   title: CustomLinerStepper(
                     totalSteps: 4,
-                    step: cubit.index.toDouble(),
+                    step: cubit.signupIndex.toDouble(),
                   ),
                 ),
                 Expanded(
                   child: PageView(
                     physics: const NeverScrollableScrollPhysics(),
-                    onPageChanged: (value) => cubit.onToggle(value),
-                    controller: cubit.pageController,
+                    onPageChanged: (value) => cubit.onSignupToggle(value),
+                    controller: cubit.signupPageController,
                     children: [
                       EnrollNameView(
                         cubit: cubit,
@@ -60,7 +65,21 @@ class SignUpView extends StatelessWidget {
                       VerificationView(
                         cubit: cubit,
                         state: state,
-                      )
+                        onTap: () {
+                          cubit.signupPageController.nextPage(
+                            duration: kNavDuration,
+                            curve: Curves.linear,
+                          );
+                        },
+                      ),
+                      SetPasswordView(
+                        cubit: cubit,
+                        state: state,
+                      ),
+                      NotificationAllowVeiw(
+                        cubit: cubit,
+                        state: state,
+                      ),
                     ],
                   ),
                 )

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../constants.dart';
 
 class CustomAppButton extends StatelessWidget {
@@ -20,47 +19,46 @@ class CustomAppButton extends StatelessWidget {
     this.icon,
     this.borderRadius = 18,
     this.elevation = 0,
+    this.activeButton = true,
+    this.inactiveColor = const Color(0xffFF896A),
   });
 
   final String label;
   final Function() onTap;
   final Color backgroundColor;
   final double width, height, borderRadius, elevation;
-  final Color splashColor;
+  final Color splashColor, inactiveColor;
   final TextStyle textStyle;
   final Widget? icon;
+  final bool activeButton;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: splashColor,
       highlightColor: splashColor,
-      onTap: onTap,
+      onTap: (activeButton) ? onTap : null,
       borderRadius: BorderRadius.circular(borderRadius),
-      child: Column(
-        children: [
-          Card(
-            elevation: elevation,
-            child: Container(
-              height: height,
-              width: width,
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: BorderRadiusDirectional.circular(borderRadius),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  if (icon != null) icon!,
-                  Text(
-                    label,
-                    style: textStyle,
-                  ),
-                ],
-              ),
-            ),
+      child: Card(
+        elevation: elevation,
+        child: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            color: (activeButton) ? backgroundColor : inactiveColor,
+            borderRadius: BorderRadiusDirectional.circular(borderRadius),
           ),
-        ],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              if (icon != null) icon!,
+              Text(
+                label,
+                style: textStyle,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

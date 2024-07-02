@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -58,6 +59,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: textInputType,
         validator: (value) => validator!(value),
         onTapOutside: (event) => FocusManager.instance.primaryFocus!.unfocus(),
+        obscuringCharacter: "*",
         decoration: InputDecoration(
           errorText: errorText,
           contentPadding: contentPadding,
@@ -97,9 +99,7 @@ class CustomTextField extends StatelessWidget {
             ),
           ),
           filled: true,
-          prefix: const SizedBox(
-            width: 8,
-          ),
+          prefix: const SizedBox(width: 8),
           fillColor: filledColor,
           hoverColor: kMainColor,
           hintText: hintText,
@@ -108,6 +108,7 @@ class CustomTextField extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
                 color: Color(0xff828894),
+                letterSpacing: 1.5,
               ),
         ),
       ),

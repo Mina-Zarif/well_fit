@@ -42,11 +42,11 @@ class WelcomeBody extends StatelessWidget {
           const SizedBox(height: 35),
           CustomAppButton(
             label: "Get Started",
-            onTap: () => AppRouter.router.pushReplacement(AppRouter.signupView),
+            onTap: () => AppRouter.router.push(AppRouter.signupView),
           ),
           const SizedBox(height: 20),
           CustomSignInButton(
-            onSignInTap: () {},
+            onSignInTap: () => AppRouter.router.push(AppRouter.loginView),
           ),
           const SizedBox(
             height: 50,

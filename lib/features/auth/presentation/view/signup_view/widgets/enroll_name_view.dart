@@ -54,7 +54,7 @@ class EnrollNameView extends StatelessWidget {
             CustomAppButton(
               label: "Continue",
               onTap: () {
-                cubit.pageController.nextPage(
+                cubit.signupPageController.nextPage(
                   duration: kNavDuration,
                   curve: Curves.linear,
                 );

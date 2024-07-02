@@ -43,7 +43,7 @@ class EmailView extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             CustomTextField(
-              controller: cubit.emailAddress,
+              controller: cubit.signupEmailAddress,
               textInputType: TextInputType.emailAddress,
               hintText: "Email",
               elevation: 1.4,
@@ -52,7 +52,7 @@ class EmailView extends StatelessWidget {
             CustomAppButton(
               label: "Verify",
               onTap: () {
-                cubit.pageController.nextPage(
+                cubit.signupPageController.nextPage(
                   duration: kNavDuration,
                   curve: Curves.linear,
                 );

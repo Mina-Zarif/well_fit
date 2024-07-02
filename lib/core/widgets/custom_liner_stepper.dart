@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -32,7 +34,7 @@ class CustomLinerStepper extends StatelessWidget {
         AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           height: 8,
-          width: width * step / totalSteps,
+          width: width * min((step / totalSteps),1),
           decoration: BoxDecoration(
             color: activeColor,
             borderRadius: const BorderRadius.all(
